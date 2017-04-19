@@ -1,9 +1,9 @@
 # Muti-User-Blog
 
-##Introduction
+## Introduction
 This is a back-end code written in Python as a multi-users blog website which you can registers the user,make,edit and delete new posts, add likes and unlikes in it and add comments for the same
 
-##Libraries Used
+## Libraries Used
 * webapp2
 * jinja2
 * os
