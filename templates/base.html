@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multi User Blog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            width: 85%;
+            margin: 0 auto;
+            padding: 10px;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            width: 250px;
+            margin: auto;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .login-signup {
+            margin: auto;
+        }
+        label {
+            display: block;
+            font-size: 20px;
+        }
+        div.label {
+            display: block;
+            font-size: 20px;
+            text-align: left;
+        }
+        label.comment {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 20px;
+        }
+        label + label {
+            margin-top: 20px;
+        }
+        input[type=text], input[type=password] {
+            width: 500px;
+            font-size: 20px;
+            padding: 2px;
+            font-family: monospace;
+        }
+        textarea.content {
+            width: 500px;
+            height: 400px;
+            font-size: 17px;
+            font-family: monospace;
+        }
+        textarea.comment {
+            width: 580px;
+            height: 45px;
+            font-size: 17px;
+            margin-right: 10px;
+            font-family: monospace;
+        }
+        .login-area {
+            font-size: 13px;
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        div input[type=submit], button {
+            font-size: 20px;
+            margin-right: 10px;
+            border-radius: 8px;
+            transition-duration: 0.3s;
+        }
+        div input[type=submit]:hover, button:hover {
+            font-size: 20px;
+            margin-right: 10px;
+            background-color: #02b3e4;
+            color: white;
+        }
+        .main-title {
+            display: block;
+            color: #222;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+        .post {
+            border: 0px;
+            position: relative;
+            padding: 50px;
+            border-radius: 10px;
+            margin-bottom:50px;
+            background-color: #F8F8F8;
+            border: 0.5px solid white;
+        }
+        .post-comment {
+            position: relative;
+            word-wrap: break-word;
+            width: 100%;
+            padding: 10px;
+            border-radius: 40px;
+            margin-bottom:20px;
+            border: 0.5px solid white;
+            color: white;
+        }
+        .comment-content {
+            font-family: sans-serif;
+        }
+        .post + .post {
+            margin-top: 15px;
+        }
+        .post-heading {
+            position: relative;
+            border-bottom: 3px solid #666;
+        }
+        .post-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .post-date {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            color: #333;
+        }
+        .notfound {
+            font-family: sans-serif;
+            size: 800px;
+            margin: auto;
+            font-weight: bolder;
+        }
+        .post-content {
+            margin-top: 5px;
+        }
+        .content-class {
+            padding: 15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .edit {
+            background: #F65A5B ;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 40px;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 -30px 0 40px;
+            text-align: center;
+            font-weight: 200;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background 500ms;
+        }
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: inherit;
+            text-decoration: inherit;
+            font-weight: inherit;
+        }
+        button.sign {
+            height: 10px;
+            width: 20px;
+            }
+        input[type=submit].like {
+            background-color: #02b3e4 ;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 200;
+            height: 100px;
+            line-height: 80px;
+            text-align: center;
+            width: 100px;
+            position: absolute;
+            top: 200px;
+            right: 300px;
+        }
+        input[type=submit].unlike {
+            background-color: #02b3e4 ;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 200;
+            height: 100px;
+            line-height: 80px;
+            text-align: center;
+            width: 100px;
+            position: absolute;
+            top: 200px;
+            right: 190px;
+        }
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/blog">Blog It!</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/welcome">Welcome</a>
+                    </li>
+                    <li><a href="/blog">Home</a>
+                    </li>
+                    <li><a href="/blog/newpost">New Post</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user %}
+                    <li><a href="#">{{user.name}}</a>
+                        <li>
+                            <li><a class="login-link" href="/logout">logout</a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a class="login-link" href="/login">login</a>
+                            </li>
+                            <li>
+                                <a class="login-link" href="/signup">signup</a>
+                            </li>
+                            {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+
+
+        </div>
+        <div id="content" class="content-class">
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>
+

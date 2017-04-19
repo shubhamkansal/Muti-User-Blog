@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <h2>Signup</h2>
+        <div class="login-signup">
+            <form method="post">
+                <div class="label">
+                    Username
+                </div>
+                <div class="row">
+                    <div>
+                        <input type="text" name="username" value="{{username}}">
+                    </div>
+
+                    <div class="error">
+                       {{error_username}}
+                    </div>
+                </div>
+                <div class="label">
+                    Password
+                </div>
+                <div class="row">
+                    <div>
+                        <input type="password" name="password" value="">
+                    </div>
+                    <div class="error">
+                        {{error_password}}
+                    </div>
+                </div>
+                <div class="label">
+                    Verify Password
+                </div>
+                <div class="row">
+                    <div>
+                        <input type="password" name="verify" value="">
+                    </div>
+                    <div class="error">
+                        {{error_verify}}
+                    </div>
+                </div>
+                <div class="label">
+                    Email (optional)
+                </div>
+                <div class="row">
+                    <div>
+                        <input type="text" name="email" value="{{email}}">
+                    </div>
+                    <div class="error">
+                        {{error_email}}
+                    </div>
+                </div>
+            <br>
+            <label class="comment">
+            <form>
+                <input type="submit">
+                    <form method="get" action="/login">
+                        <button>Login</button>
+                    </form>
+            </form>
+            </label>
+        </div>
+ {% endblock %}

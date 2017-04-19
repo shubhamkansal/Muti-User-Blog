@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h2>Edit Comment</h2>
+        <form method="post">
+            <label>
+                <div>Type Your New Comment Here:</div>
+                <input type="text" name="comment_content" value="{{subject}}">
+            </label>
+
+            <div class="error">{{error}}</div>
+
+        </form>
+
+{% endblock %}

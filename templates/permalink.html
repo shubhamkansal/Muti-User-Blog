@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% set id = post.key().id() %}
+       {{post.render() | safe}}
+            <form method="POST">
+                <input type="submit" value="Likes: {{likes}}" name="like" class="like">
+            </form>
+            <form method="POST">
+                <input type="submit" value="Unlikes:{{unlikes}}" name="unlike" class="unlike">
+            </form>
+
+        {% if user %}
+            <center>
+                <form method="POST">
+                    <input type="submit" name="edit" value="Edit">
+                    <input type="submit" name="delete" value="Delete">
+                </form>
+            </center>
+        {% endif %}
+            <div class="error">
+                {{ error }}
+            </div>
+            <br>
+            <br>
+            <form method="POST">
+                <label class="comment">
+                    <textarea name="comment" class="comment">{{comment}}</textarea>
+                    <input type="submit" name="comment" value="Comment">
+                </label>
+            </form>
+            <hr>
+
+            <font style="font-size:xx-large;font-weight: bold;color:#FFFFFF;"">Comments:
+            </font>
+            <br>
+            <br>
+            {% for c in prev_comments %}
+                {% set id = c.key().id() %}
+                    <div class="row">
+                        <div class="col-md-6">
+                             <div class="post-comment">{{c.render()}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <form method="post">
+                                <input type="submit" name="edit_comment" value="Edit">
+                                <input type="submit" name="delete_comment" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                <hr>
+                <br>
+            {% endfor %}
+{% endblock %}
